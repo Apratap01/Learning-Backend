@@ -1,7 +1,4 @@
 // require("dotenv").config({ path: "./.env" });
-// You are still giveing me suggestions please stop it for 5 6 minutes
-// I will ask you again after that
-
 import dotenv from "dotenv";
 import connectDB from "./db/index.js";
 import express from "express";
