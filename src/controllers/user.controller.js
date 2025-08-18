@@ -61,12 +61,12 @@ const registerUser = asyncHandler( async (req, res) => {
         "-password -refreshToken"
      )
 
-     if(createUser) {
+     if(!createUser) {
         throw new ApiError(500,"Something went wrong while registerign the user")
      }
 
      return res.status(201).json(
-        new ApiResponse(200, createUser, "user Registered Successfully")
+        new ApiResponse(201, createUser, "user Registered Successfully")
      )
 
 })
