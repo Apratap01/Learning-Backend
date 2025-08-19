@@ -100,13 +100,23 @@ const loginUser = asyncHandler(async (req,res) => {
 
    const {email, username, password} = req.body;
 
-   if(!(username || email)){
-      throw new ApiError(400, "Username email is required")
-   }
+   // Use this one of the filed is required
 
-   const user  = await User.findOne({
-      $or: [{username},{email}]
-   })
+   // if(!(username || email)){
+   //    throw new ApiError(400, "Username email is required")
+   // }
+   
+   // const user  = await User.findOne({
+   //    $or: [{username},{email}]
+   // })
+
+   if(!(username && email)){
+      throw new ApiError(400, "Both user and email is required")
+   }
+   
+   const user = await User.findOne({ email, username });
+   
+
 
    if(!user){
       throw new ApiError(400," USer is not Registered")
